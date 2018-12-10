@@ -32,8 +32,19 @@ void StoreInteger::autoDisconnect(QSpinBox* const spin_box) {
                this, SLOT(setValue(int)));
 }
 
+void StoreInteger::autoConnect(QLabel* const label) {
+    label->setNum(_value);
+    connect(this, SIGNAL(valueChanged(int)),
+            label, SLOT(setNum(int)));
+}
+
+void StoreInteger::autoDisconnect(QLabel* const label) {
+    disconnect(this, SIGNAL(valueChanged(int)),
+               label, SLOT(setNum(int)));
+}
+
 void StoreInteger::setValue(int value) {
-    if (value != _value) {
+    if (_value != value) {
         _value = value;
         emit valueChanged(_value);
     }

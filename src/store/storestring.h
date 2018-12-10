@@ -5,34 +5,36 @@
 #ifndef STORE_STORESTRING_H
 #define STORE_STORESTRING_H
 
-#include <functional>
-#include <string>
-
+#include <QObject>
+#include <QLabel>
+#include <QLineEdit>
 #include <QString>
 
 
 namespace store {
 
 
-class StoreString {
+class StoreString : public QObject {
+    Q_OBJECT
+
 public:
-    class View {
-    public:
-        explicit View(const char* value) : _value {value} {};
+    explicit StoreString(const QString& text);
+    operator const QString&() const;
 
-        operator const char*() const;
-        operator const std::string&() const;
-        operator QString() const;
+    void autoConnect(QLabel* const label);
+    void autoDisconnect(QLabel* const label);
 
-    private:
-        std::string _value;
-    };
+    void autoConnect(QLineEdit* const line_edit);
+    void autoDisconnect(QLineEdit* const line_edit);
 
-    explicit StoreString(const char* value) : _view {value} {};
-    void bind(std::function<void(const View&)> function);
+signals:
+    void textChanged(const QString& text);
+
+public slots:
+    void setText(const QString& text);
 
 private:
-    View _view;
+    QString _text;
 };
 
 

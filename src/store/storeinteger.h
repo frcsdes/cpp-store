@@ -5,9 +5,7 @@
 #ifndef STORE_STOREINTEGER_H
 #define STORE_STOREINTEGER_H
 
-#include <functional>
-#include <vector>
-
+#include <QLabel>
 #include <QObject>
 #include <QSpinBox>
 
@@ -24,6 +22,8 @@ public:
 
     void autoConnect(QSpinBox* const spin_box);
     void autoDisconnect(QSpinBox* const spin_box);
+    void autoConnect(QLabel* const label);
+    void autoDisconnect(QLabel* const label);
 
 private:
     int _value;

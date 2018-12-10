@@ -9,7 +9,7 @@ namespace store {
 
 
 StoreInteger Store::integer {4};
-StoreString Store::string {"Label text"};
+StoreString Store::string {"Text"};
 
 
 } // namespace store
