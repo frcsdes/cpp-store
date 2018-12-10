@@ -6,12 +6,20 @@
 #define STORE_STORE_H
 
 
+#include "storeinteger.h"
+#include "storestring.h"
+
+
 namespace store {
 
 
 class Store {
 public:
     Store() = delete;
+
+public:
+    static StoreInteger integer;
+    static StoreString string;
 };
 
 

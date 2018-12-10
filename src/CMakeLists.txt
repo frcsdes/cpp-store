@@ -4,8 +4,10 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-    store/store.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/store/store.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/store/storeinteger.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/store/storestring.cpp
     )
 
 add_executable(store ${SOURCES})

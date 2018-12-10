@@ -8,7 +8,8 @@
 namespace store {
 
 
-
+StoreInteger Store::integer {0};
+StoreString Store::string {"Label text"};
 
 
 } // namespace store
