@@ -9,6 +9,7 @@
 #include <vector>
 
 #include <QObject>
+#include <QSpinBox>
 
 
 namespace store {
@@ -18,32 +19,22 @@ class StoreInteger : public QObject {
     Q_OBJECT
 
 public:
-    class View {
-    public:
-        View(int value) : _value {value} {};
-        operator int() const;
+    explicit StoreInteger(int value);
+    operator int() const;
 
-        friend class StoreInteger;
+    void autoConnect(QSpinBox* const spin_box);
+    void autoDisconnect(QSpinBox* const spin_box);
 
-    private:
-        int _value;
-    };
+private:
+    int _value;
 
-    using Binding = std::function<void(const View&)>;
-    using Setter = std::function<int(const View&)>;
-
-    explicit StoreInteger(int value) : _view {value} {};
-    void bind(Binding function);
-
-    void dispatch() const;
+signals:
+    void valueChanged(int);
 
 public slots:
     void setValue(int value);
+    void decrementValue();
     void incrementValue();
-
-private:
-    View _view;
-    std::vector<Binding> _bindings;
 };
 
 

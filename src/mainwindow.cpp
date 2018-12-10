@@ -18,19 +18,17 @@ namespace store {
 MainWindow::MainWindow() {
     setWindowTitle(tr("Store demo"));
 
-    auto* spin_box = new QSpinBox;
-    Store::integer.bind([spin_box](auto view) { spin_box->setValue(view); });
+    auto* spin_box_1 = new QSpinBox;
+    Store::integer.autoConnect(spin_box_1);
 
-    auto* push_button = new QPushButton("Increment");
-    connect(push_button, SIGNAL(pressed()),
-            &Store::integer, SLOT(incrementValue()));
+    auto* spin_box_2 = new QSpinBox;
+    Store::integer.autoConnect(spin_box_2);
 
     auto* label = new QLabel;
-    Store::string.bind([label](auto view) { label->setText(view); });
 
     auto* central_layout = new QVBoxLayout;
-    central_layout->addWidget(spin_box);
-    central_layout->addWidget(push_button);
+    central_layout->addWidget(spin_box_1);
+    central_layout->addWidget(spin_box_2);
     central_layout->addWidget(label);
 
     auto* central_widget = new QWidget;
