@@ -11,7 +11,12 @@ namespace store {
 
 template<class T>
 class StoreVariable {
+public:
+    explicit StoreVariable (T value) : _value {value} {};
+    operator T() { return _value; }
 
+private:
+    T _value;
 };
 
 

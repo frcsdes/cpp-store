@@ -13,10 +13,15 @@ namespace store {
 
 class Store {
 public:
-    Store() = delete;
+    static Store& instance();
 
-public:
-    static StoreVariable<int> integer;
+    Store(const Store&) = delete;
+    void operator=(const Store&) = delete;
+
+    StoreVariable<int> _integer {4};
+
+private:
+    Store() = default;
 };
 
 

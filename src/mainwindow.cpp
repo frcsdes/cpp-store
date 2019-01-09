@@ -20,12 +20,14 @@ MainWindow::MainWindow() {
 
     // StoreInteger
     auto* spin_box_1 = new QSpinBox;
+    spin_box_1->setValue(Store::instance()._integer);
 
     auto* spin_box_2 = new QSpinBox;
-
-    auto* label_1 = new QLabel;
+    spin_box_2->setValue(Store::instance()._integer);
 
     // StoreString
+    auto* label_1 = new QLabel;
+
     auto* label_2 = new QLabel;
 
     auto* line_edit = new QLineEdit;

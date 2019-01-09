@@ -8,7 +8,10 @@
 namespace store {
 
 
-
+Store& Store::instance() {
+    static Store instance;
+    return instance;
+};
 
 
 } // namespace store
