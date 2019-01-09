@@ -5,9 +5,7 @@
 #ifndef STORE_STORE_H
 #define STORE_STORE_H
 
-
-#include "storeinteger.h"
-#include "storestring.h"
+#include "storevariable.h"
 
 
 namespace store {
@@ -18,8 +16,7 @@ public:
     Store() = delete;
 
 public:
-    static StoreInteger integer;
-    static StoreString string;
+    static StoreVariable<int> integer;
 };
 
 

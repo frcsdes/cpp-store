@@ -20,20 +20,15 @@ MainWindow::MainWindow() {
 
     // StoreInteger
     auto* spin_box_1 = new QSpinBox;
-    Store::integer.autoConnect(spin_box_1);
 
     auto* spin_box_2 = new QSpinBox;
-    Store::integer.autoConnect(spin_box_2);
 
     auto* label_1 = new QLabel;
-    Store::integer.autoConnect(label_1);
 
     // StoreString
     auto* label_2 = new QLabel;
-    Store::string.autoConnect(label_2);
 
     auto* line_edit = new QLineEdit;
-    Store::string.autoConnect(line_edit);
 
     auto* central_layout = new QVBoxLayout;
     central_layout->addWidget(spin_box_1);
