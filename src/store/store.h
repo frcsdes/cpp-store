@@ -7,6 +7,8 @@
 
 #include "storevariable.h"
 
+#include <QString>
+
 
 namespace store {
 
@@ -19,6 +21,7 @@ public:
     void operator=(const Store&) = delete;
 
     StoreVariable<int> _integer {4};
+    StoreVariable<QString> _string {"Test"};
 
 private:
     Store() = default;
