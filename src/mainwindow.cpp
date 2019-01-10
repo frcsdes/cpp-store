@@ -39,7 +39,8 @@ MainWindow::MainWindow() {
 
     // StoreString
     auto* label = new QLabel;
-    MyStore::instance().string.subscribe(std::bind(&QLabel::setText, label, _1));
+    MyStore::instance().string.subscribe(
+        std::bind(&QLabel::setText, label, _1));
 
     auto* line_edit = new QLineEdit;
     MyStore::instance().string.subscribe(
