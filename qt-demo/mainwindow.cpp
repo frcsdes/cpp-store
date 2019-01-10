@@ -14,6 +14,8 @@ namespace store {
 
 
 MainWindow::MainWindow() {
+    using namespace std::placeholders;
+
     setWindowTitle(tr("Store demo"));
 
 
@@ -21,7 +23,7 @@ MainWindow::MainWindow() {
     auto* spin_box_1 = new QSpinBox;
     // Subscribe to changes via bound member function
     MyStore::instance().integer.subscribe(
-        std::bind(&QSpinBox::setValue, spin_box_1, std::placeholders::_1));
+        std::bind(&QSpinBox::setValue, spin_box_1, _1), true);
     // Set a new value when the spin box changes
     connect(spin_box_1, qOverload<int>(&QSpinBox::valueChanged),
             MyStore::instance().integer.setter());
@@ -30,7 +32,7 @@ MainWindow::MainWindow() {
     // Easier and more flexible lambda subscription
     MyStore::instance().integer.subscribe([spin_box_2](int value) {
         spin_box_2->setValue(value);
-    });
+    }, true);
     connect(spin_box_2, qOverload<int>(&QSpinBox::valueChanged),
             MyStore::instance().integer.setter());
 
@@ -39,13 +41,13 @@ MainWindow::MainWindow() {
     auto* line_edit = new QLineEdit;
     MyStore::instance().string.subscribe([line_edit](const QString& value) {
         line_edit->setText(value);
-    });
+    }, true);
     connect(line_edit, &QLineEdit::textChanged,
             MyStore::instance().string.setter());
 
     auto* label = new QLabel;
     MyStore::instance().string.subscribe(
-        std::bind(&QLabel::setText, label, std::placeholders::_1));
+        std::bind(&QLabel::setText, label, _1), true);
 
 
     // Setup and show the window (no connect!)

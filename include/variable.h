@@ -21,13 +21,12 @@ public:
     Variable(const Variable&) = delete;
     Variable& operator=(const Variable&) = delete;
 
-public:
     explicit Variable (T value) : _value {value} {};
 
     TConst operator()() const { return _value; }
     const Functor& setter() const { return _setter; }
 
-    void subscribe(Functor subscriber, bool call = true) {
+    void subscribe(Functor subscriber, bool call = false) {
         _subscribers.push_back(subscriber);
         if (call)
             subscriber(_value);
