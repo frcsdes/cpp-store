@@ -1,7 +1,3 @@
-//
-// Created by fdesrich on 12/7/18.
-//
-
 #ifndef STORE_MAINWINDOW_H
 #define STORE_MAINWINDOW_H
 

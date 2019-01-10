@@ -1,7 +1,3 @@
-//
-// Created by fdesrich on 1/9/19.
-//
-
 #ifndef STORE_VARIABLE_H
 #define STORE_VARIABLE_H
 

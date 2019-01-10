@@ -1,7 +1,3 @@
-//
-// Created by fdesrich on 1/10/19.
-//
-
 #ifndef STORE_MYSTORE_H
 #define STORE_MYSTORE_H
 
