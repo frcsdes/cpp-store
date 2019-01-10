@@ -15,16 +15,16 @@ namespace store {
 
 template<class T>
 class StoreVariable {
-public:
     using TConst = typename std::add_const<T>::type;
-    using TBase = typename std::remove_cv
+    using TBase = typename std::remove_const
                  <typename std::remove_reference<T>::type>::type;
     using Functor = std::function<void(T)>;
 
+public:
     explicit StoreVariable (T value) : _value {value} {};
-    operator TConst() { return _value; }
 
-    const Functor& setter() { return _setter; }
+    operator TConst() const { return _value; }
+    const Functor& setter() const { return _setter; }
 
     void subscribe(Functor subscriber, bool call = true) {
         _subscribers.push_back(subscriber);
@@ -34,6 +34,12 @@ public:
 
 private:
     TBase _value;
+    std::vector<Functor> _subscribers;
+
+    void dispatch() {
+        for (const auto& subscriber : _subscribers)
+            subscriber(_value);
+    }
 
     Functor _setter {[this](T value) {
         if (_value != value) {
@@ -41,12 +47,6 @@ private:
             dispatch();
         }
     }};
-
-    std::vector<Functor> _subscribers;
-    void dispatch() {
-        for (const auto& subscriber : _subscribers)
-            subscriber(_value);
-    }
 };
 
 
