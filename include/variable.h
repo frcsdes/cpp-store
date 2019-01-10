@@ -17,6 +17,11 @@ class Variable {
     using Functor = std::function<void(T)>;
 
 public:
+    Variable() = delete;
+    Variable(const Variable&) = delete;
+    Variable& operator=(const Variable&) = delete;
+
+public:
     explicit Variable (T value) : _value {value} {};
 
     TConst operator()() const { return _value; }
