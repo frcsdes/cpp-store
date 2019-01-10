@@ -5,7 +5,7 @@
 #ifndef STORE_STORE_H
 #define STORE_STORE_H
 
-#include "storevariable.h"
+#include "variable.h"
 
 #include <QString>
 

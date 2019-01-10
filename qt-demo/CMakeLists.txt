@@ -1,10 +1,9 @@
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.cpp
+    main.cpp
+    mainwindow.cpp
     )
 
 add_executable(store ${SOURCES})

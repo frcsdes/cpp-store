@@ -2,8 +2,8 @@
 // Created by fdesrich on 1/9/19.
 //
 
-#ifndef STORE_STOREVARIABLE_H
-#define STORE_STOREVARIABLE_H
+#ifndef STORE_VARIABLE_H
+#define STORE_VARIABLE_H
 
 #include <functional>
 #include <type_traits>
@@ -14,14 +14,14 @@ namespace store {
 
 
 template<class T>
-class StoreVariable {
+class Variable {
     using TConst = typename std::add_const<T>::type;
     using TBase = typename std::remove_const
                  <typename std::remove_reference<T>::type>::type;
     using Functor = std::function<void(T)>;
 
 public:
-    explicit StoreVariable (T value) : _value {value} {};
+    explicit Variable (T value) : _value {value} {};
 
     operator TConst() const { return _value; }
     const Functor& setter() const { return _setter; }
@@ -52,4 +52,4 @@ private:
 
 } // namespace store
 
-#endif // STORE_STOREVARIABLE_H
+#endif // STORE_VARIABLE_H
