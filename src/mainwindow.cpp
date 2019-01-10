@@ -4,7 +4,7 @@
 
 #include "mainwindow.h"
 
-#include "store/store.h"
+#include "mystore.h"
 
 #include <functional>
 
@@ -25,27 +25,27 @@ MainWindow::MainWindow() {
     // StoreInteger
     auto* spin_box_1 = new QSpinBox;
     // Subscribing via bound member function
-    Store::instance().integer.subscribe(
+    MyStore::instance().integer.subscribe(
         std::bind(&QSpinBox::setValue, spin_box_1, _1));
     connect(spin_box_1, qOverload<int>(&QSpinBox::valueChanged),
-            Store::instance().integer.setter());
+            MyStore::instance().integer.setter());
 
     auto* spin_box_2 = new QSpinBox;
     // Easier and flexible lambda subscription
-    Store::instance().integer.subscribe(
+    MyStore::instance().integer.subscribe(
         [spin_box_2](int value) { spin_box_2->setValue(value); });
     connect(spin_box_2, qOverload<int>(&QSpinBox::valueChanged),
-            Store::instance().integer.setter());
+            MyStore::instance().integer.setter());
 
     // StoreString
     auto* label = new QLabel;
-    Store::instance().string.subscribe(std::bind(&QLabel::setText, label, _1));
+    MyStore::instance().string.subscribe(std::bind(&QLabel::setText, label, _1));
 
     auto* line_edit = new QLineEdit;
-    Store::instance().string.subscribe(
+    MyStore::instance().string.subscribe(
         [line_edit](const QString& value) { line_edit->setText(value); });
     connect(line_edit, &QLineEdit::textChanged,
-            Store::instance().string.setter());
+            MyStore::instance().string.setter());
 
     auto* central_layout = new QVBoxLayout;
     central_layout->addWidget(spin_box_1);

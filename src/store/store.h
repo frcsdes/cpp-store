@@ -13,17 +13,18 @@
 namespace store {
 
 
+template<class CustomStore>
 class Store {
 public:
-    static Store& instance();
+    static CustomStore& instance() {
+        static CustomStore instance;
+        return instance;
+    }
 
     Store(const Store&) = delete;
     Store& operator=(const Store&) = delete;
 
-    StoreVariable<int> integer {4};
-    StoreVariable<const QString&> string {"Test"};
-
-private:
+protected:
     Store() = default;
 };
 

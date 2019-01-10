@@ -5,7 +5,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/store/store.cpp
     )
 
 add_executable(store ${SOURCES})
