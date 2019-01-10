@@ -19,7 +19,7 @@ class Variable {
 public:
     explicit Variable (T value) : _value {value} {};
 
-    operator TConst() const { return _value; }
+    TConst operator()() const { return _value; }
     const Functor& setter() const { return _setter; }
 
     void subscribe(Functor subscriber, bool call = true) {

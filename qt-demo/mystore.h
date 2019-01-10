@@ -2,6 +2,7 @@
 #define STORE_MYSTORE_H
 
 #include "store.h"
+#include "variable.h"
 
 
 namespace store {

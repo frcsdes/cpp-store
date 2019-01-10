@@ -16,6 +16,6 @@ The idea is to let a *singleton* class `Store` manage variables that can be reus
 * Standalone headers are in `include/`
 * Have `MyStore` inherit `Store<MyStore>`
 * Add `Variable<T>` members in `MyStore`
-* Get the value through the implicit conversion to `const T`
+* Get the value with `const T operator()`
 * Set the value through `setter()(T)`
 * Subscribe to modifications using `subscribe(void(T))`
