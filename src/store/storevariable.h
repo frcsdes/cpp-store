@@ -12,31 +12,35 @@
 namespace store {
 
 
-// @todo Manage copyable / movable differently?
 template<class T>
 class StoreVariable {
 public:
+    using Functor = std::function<void(T)>;
+    using Base = typename std::remove_cv
+                <typename std::remove_reference<T>::type>::type;
+
     explicit StoreVariable (T value) : _value {value} {};
     operator T() const { return _value; }
 
-    void set(T value) {
-        if (_value != value) {
-            _value = value;
-            dispatch();
-        }
-    }
+    const Functor& setter() { return _setter; }
 
-    using Subscriber = std::function<void(T)>;
-    void subscribe(Subscriber subscriber, bool call = true) {
+    void subscribe(Functor subscriber, bool call = true) {
         _subscribers.push_back(subscriber);
         if (call)
             subscriber(_value);
     }
 
 private:
-    T _value;
+    Base _value;
 
-    std::vector<Subscriber> _subscribers;
+    Functor _setter {[this](T value) {
+        if (_value != value) {
+            _value  = value;
+            dispatch();
+        }
+    }};
+
+    std::vector<Functor> _subscribers;
     void dispatch() {
         for (const auto& subscriber : _subscribers)
             subscriber(_value);

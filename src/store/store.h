@@ -18,10 +18,10 @@ public:
     static Store& instance();
 
     Store(const Store&) = delete;
-    void operator=(const Store&) = delete;
+    Store& operator=(const Store&) = delete;
 
-    StoreVariable<int> _integer {4};
-    StoreVariable<QString> _string {"Test"};
+    StoreVariable<int> integer {4};
+    StoreVariable<const QString&> string {"Test"};
 
 private:
     Store() = default;
