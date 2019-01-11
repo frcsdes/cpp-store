@@ -11,7 +11,6 @@ namespace store {
 
 template<class T>
 class Variable {
-    using TConst = typename std::add_const<T>::type;
     using TBase = typename std::remove_const
                  <typename std::remove_reference<T>::type>::type;
     using Functor = std::function<void(T)>;
@@ -23,8 +22,14 @@ public:
 
     explicit Variable (T value) : _value {value} {};
 
-    TConst operator()() const { return _value; }
-    const Functor& setter() const { return _setter; }
+    const T get() const { return _value; }
+
+    const Functor set {[this](T value) {
+        if (_value != value) {
+            _value  = value;
+            dispatch();
+        }
+    }};
 
     void subscribe(Functor subscriber, bool call = false) {
         _subscribers.push_back(subscriber);
@@ -40,13 +45,6 @@ private:
         for (const auto& subscriber : _subscribers)
             subscriber(_value);
     }
-
-    Functor _setter {[this](T value) {
-        if (_value != value) {
-            _value  = value;
-            dispatch();
-        }
-    }};
 };
 
 
