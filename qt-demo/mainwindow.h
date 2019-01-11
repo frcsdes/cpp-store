@@ -1,6 +1,8 @@
 #ifndef STORE_MAINWINDOW_H
 #define STORE_MAINWINDOW_H
 
+#include "store.h"
+
 #include <QMainWindow>
 
 
@@ -12,6 +14,9 @@ class MainWindow : public QMainWindow {
 
 public:
     MainWindow();
+
+private:
+    Store _store;
 };
 
 

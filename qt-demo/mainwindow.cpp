@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 
-#include "mystore.h"
-
 #include <functional>
 
 #include <QLabel>
@@ -22,31 +20,31 @@ MainWindow::MainWindow() {
     // Store an integer and using it with two spin boxes
     auto* spin_box_1 = new QSpinBox;
     // Subscribe to changes via bound member function
-    MyStore::instance().integer.subscribe(
+    _store.integer.subscribe(
         std::bind(&QSpinBox::setValue, spin_box_1, _1), true);
     // Set a new value when the spin box changes
     connect(spin_box_1, qOverload<int>(&QSpinBox::valueChanged),
-            MyStore::instance().integer.setter());
+            _store.integer.setter());
 
     auto* spin_box_2 = new QSpinBox;
     // Easier and more flexible lambda subscription
-    MyStore::instance().integer.subscribe([spin_box_2](int value) {
+    _store.integer.subscribe([spin_box_2](int value) {
         spin_box_2->setValue(value);
     }, true);
     connect(spin_box_2, qOverload<int>(&QSpinBox::valueChanged),
-            MyStore::instance().integer.setter());
+            _store.integer.setter());
 
 
     // Store a string and using it with a line edit and a label
     auto* line_edit = new QLineEdit;
-    MyStore::instance().string.subscribe([line_edit](const QString& value) {
+    _store.string.subscribe([line_edit](const QString& value) {
         line_edit->setText(value);
     }, true);
     connect(line_edit, &QLineEdit::textChanged,
-            MyStore::instance().string.setter());
+            _store.string.setter());
 
     auto* label = new QLabel;
-    MyStore::instance().string.subscribe(
+    _store.string.subscribe(
         std::bind(&QLabel::setText, label, _1), true);
 
 

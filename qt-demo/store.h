@@ -1,14 +1,15 @@
 #ifndef STORE_MYSTORE_H
 #define STORE_MYSTORE_H
 
-#include "store.h"
 #include "variable.h"
+
+#include <QString>
 
 
 namespace store {
 
 
-struct MyStore : Store<MyStore> {
+struct Store {
     Variable<int> integer {4};
     Variable<const QString&> string {"Test"};
 };
