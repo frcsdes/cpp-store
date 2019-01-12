@@ -9,5 +9,5 @@ set(SOURCES
 add_executable(store ${SOURCES})
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
-find_package(Qt5Widgets CONFIG REQUIRED)
+find_package(Qt5Widgets 5.7 CONFIG REQUIRED)
 target_link_libraries(store Qt5::Widgets)
