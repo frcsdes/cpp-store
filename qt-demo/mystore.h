@@ -6,10 +6,10 @@
 #include <QString>
 
 
-namespace Store {
+namespace MyStore {
 
-extern Variable<int> integer;
-extern Variable<const QString&> string;
+extern store::Variable<int> integer;
+extern store::Variable<const QString&> string;
 
 }
 

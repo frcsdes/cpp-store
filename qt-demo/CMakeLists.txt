@@ -3,7 +3,7 @@ set(CMAKE_AUTOMOC ON)
 
 set(SOURCES
     main.cpp
-    store.cpp
+    mystore.cpp
     mainwindow.cpp
     )
 

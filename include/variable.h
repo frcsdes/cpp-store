@@ -1,9 +1,14 @@
 #ifndef STORE_VARIABLE_H
 #define STORE_VARIABLE_H
 
+#include "binding.h"
+
 #include <functional>
 #include <type_traits>
 #include <vector>
+
+
+namespace store {
 
 
 template<class T>
@@ -17,22 +22,10 @@ public:
     Variable(const Variable&) = delete;
     Variable& operator=(const Variable&) = delete;
 
-    explicit Variable (T value) : _value {value} {};
+    explicit Variable(T value) : _value{value} {};
 
-    const T get() const { return _value; }
-
-    const Functor set {[this](T value) {
-        if (_value != value) {
-            _value  = value;
-            dispatch();
-        }
-    }};
-
-    void subscribe(Functor subscriber, bool call = false) {
-        _subscribers.push_back(subscriber);
-        if (call)
-            subscriber(_value);
-    }
+    friend class Get<T>;
+    friend class Set<T>;
 
 private:
     TBase _value;
@@ -44,5 +37,7 @@ private:
     }
 };
 
+
+} // namespace store
 
 #endif // STORE_VARIABLE_H
