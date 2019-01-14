@@ -17,7 +17,7 @@ MainWindow::MainWindow() {
     auto* widget = new QWidget;
     widget->setLayout(layout);
 
-    setWindowTitle(tr("Store demo"));
+    setWindowTitle("Store demo");
     setCentralWidget(widget);
     show();
 }
