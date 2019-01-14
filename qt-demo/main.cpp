@@ -5,6 +5,6 @@
 
 int main(int argc, char* argv[]) {
     QApplication application {argc, argv};
-    store::MainWindow window {};
+    MainWindow window {};
     return application.exec();
 }

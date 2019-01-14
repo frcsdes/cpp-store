@@ -6,9 +6,6 @@
 #include <vector>
 
 
-namespace store {
-
-
 template<class T>
 class Variable {
     using TBase = typename std::remove_const
@@ -47,7 +44,5 @@ private:
     }
 };
 
-
-} // namespace store
 
 #endif // STORE_VARIABLE_H
