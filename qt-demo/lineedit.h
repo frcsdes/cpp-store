@@ -11,8 +11,8 @@ class LineEdit : public QLineEdit,
 public:
     LineEdit() {
         // Subscribe with a lambda function
-        subscribe([this](const QString& value) { setText(value); }, true);
-        connect(this, &QLineEdit::textChanged, set);
+        storeSubscribe([this](const QString& value) { setText(value); }, true);
+        connect(this, &QLineEdit::textChanged, storeSet);
     }
 };
 

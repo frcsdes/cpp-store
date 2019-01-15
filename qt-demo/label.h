@@ -11,7 +11,8 @@ class Label : public QLabel,
 public:
     Label() {
         // Subscribe via a member function binding
-        subscribe(std::bind(&QLabel::setText, this, std::placeholders::_1), true);
+        auto&& bound = std::bind(&QLabel::setText, this, std::placeholders::_1);
+        storeSubscribe(bound, true);
     };
 };
 

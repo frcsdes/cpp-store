@@ -11,8 +11,8 @@ class SpinBox : public QSpinBox,
 public:
     SpinBox() {
         // Subscribe with a lambda function
-        subscribe([this](int value) { setValue(value); }, true);
-        connect(this, qOverload<int>(&QSpinBox::valueChanged), set);
+        storeSubscribe([this](int value) { setValue(value); }, true);
+        connect(this, qOverload<int>(&QSpinBox::valueChanged), storeSet);
     };
 };
 

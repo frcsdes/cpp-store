@@ -40,10 +40,10 @@ public:
         Get() = default;
 
         // Get the underlying value
-        const T getValue() const { return V._value; }
+        const T storeGet() const { return V._value; }
 
         // Call a functor on any value change; optionally, call it immediately
-        void subscribe(Functor subscriber, bool call = false) {
+        void storeSubscribe(Functor subscriber, bool call = false) {
             V._subscribers.push_back(subscriber);
             if (call)
                 subscriber(V._value);
@@ -63,7 +63,7 @@ public:
         Set() = default;
 
         // Call to change the underlying value, or use as a functor
-        const Functor set {[this](T value) {
+        const Functor storeSet {[this](T value) {
             if (V._value != value) {
                 V._value  = value;
                 V.dispatch();
