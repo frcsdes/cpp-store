@@ -2,7 +2,6 @@
 
 > A prototype for sharing state in a C++ application through a variables store
 
-
 <br>
 
 ## Disclaimer
@@ -26,5 +25,5 @@ Relying on a global state in an application is generally considered bad practice
 	* `variable.h` defines the `Variable<T>` template class
 	* `binding.h` defines the `Get<T>`, `Set<T>` and `GetSet<T>` classes
 * Create a `namespace` with external variables defined in exactly one compilation unit
-* Get a variable's value by inheriting `Get<T>::From<Variable<T>>` and calling `get` or `subscribe`
-* Set a variable's value by inheriting `Set<T>::Into<Variable<T>>` and calling `set`
+* Get a variable's value by inheriting `Get<T>::From<Variable<T>>` and calling `getValue` or `subscribe`
+* Set a variable's value by inheriting `Set<T>::Into<Variable<T>>` and calling `setValue`

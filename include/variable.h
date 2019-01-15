@@ -22,7 +22,7 @@ public:
     Variable(const Variable&) = delete;
     Variable& operator=(const Variable&) = delete;
 
-    explicit Variable(T value) : _value{value} {};
+    explicit Variable(T value) : _value {value} {};
 
     friend class Get<T>;
     friend class Set<T>;

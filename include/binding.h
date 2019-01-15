@@ -13,7 +13,7 @@ template<class T>
 class Variable;
 
 template<class T>
-struct Get : NotAnAggregate {
+struct Get final : NotAnAggregate {
     Get() = delete;
     Get(const Get&) = delete;
     Get& operator=(const Get&) = delete;
@@ -40,7 +40,7 @@ struct Get : NotAnAggregate {
 };
 
 template<class T>
-struct Set : NotAnAggregate {
+struct Set final : NotAnAggregate {
     Set() = delete;
     Set(const Set&) = delete;
     Set& operator=(const Set&) = delete;
