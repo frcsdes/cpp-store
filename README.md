@@ -21,9 +21,8 @@ Relying on a global state in an application is generally considered bad practice
 * Build using CMake and run
 
 ## Use in Your Application
-* Standalone headers are in `include/`
-	* `variable.h` defines the `Variable<T>` template class
-	* `binding.h` defines the `Get<T>`, `Set<T>` and `GetSet<T>` classes
+* Include the standalone header `include/variable.h`
 * Create a `namespace` with external variables defined in exactly one compilation unit
-* Get a variable's value by inheriting `Get<T>::From<Variable<T>>` and calling `getValue` or `subscribe`
-* Set a variable's value by inheriting `Set<T>::Into<Variable<T>>` and calling `setValue`
+* Get a value by inheriting `store::Variable<T>::Get<Variable<T>& V>` and calling `storeGet` or `storeSubscribe`
+* Set a value by inheriting `store::Variable<T>::Set<Variable<T>& V>` and calling `storeSet`
+* Similarly, `store::Variable<T>::GetSet<Variable<T>& V>` enables two-way interactivity
