@@ -73,7 +73,8 @@ public:
 
     // Two-way interactivity
     template<Variable<T>& V>
-    struct GetSet : Get<V>, Set<V> {};
+    class GetSet : public Get<V>,
+                   public Set<V> {};
 
 private:
     // The managed value
