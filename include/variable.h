@@ -9,12 +9,12 @@
 namespace store {
 
 
-// Inheriting this empty struct prevents unwanted aggregate initialization
-struct NotAnAggregate {};
-
 // The Variable class is essentially a proxy to a value of type T
 template<class T>
 class Variable {
+    // Inheriting this empty struct prevents unwanted aggregate initialization
+    struct NotAnAggregate {};
+
     // std::decay is too aggressive with arrays
     using TBase = typename std::remove_const
                  <typename std::remove_reference<T>::type>::type;
