@@ -1,15 +1,13 @@
 #ifndef STORE_LINEEDIT_H
 #define STORE_LINEEDIT_H
 
-#include "binding.h"
 #include "mystore.h"
 
 #include <QLineEdit>
 
 
 class LineEdit : public QLineEdit,
-                 store::Get<const QString&>::From<MyStore::string>,
-                 store::Set<const QString&>::Into<MyStore::string> {
+                 store::Variable<const QString&>::GetSet<MyStore::string> {
 public:
     LineEdit() {
         // Subscribe with a lambda function

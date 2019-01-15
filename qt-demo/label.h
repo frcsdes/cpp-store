@@ -1,14 +1,13 @@
 #ifndef STORE_LABEL_H
 #define STORE_LABEL_H
 
-#include "binding.h"
 #include "mystore.h"
 
 #include <QLabel>
 
 
 class Label : public QLabel,
-              store::Get<const QString&>::From<MyStore::string> {
+              store::Variable<const QString&>::Get<MyStore::string> {
 public:
     Label() {
         // Subscribe via a member function binding
