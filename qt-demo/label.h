@@ -13,7 +13,7 @@ public:
         // Subscribe via a member function binding
         auto&& bound = std::bind(&QLabel::setText, this, std::placeholders::_1);
         storeSubscribe(bound, true);
-    };
+    }
 };
 
 

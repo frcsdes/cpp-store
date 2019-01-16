@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 
+#include "button.h"
 #include "label.h"
 #include "lineedit.h"
 #include "spinbox.h"
@@ -13,6 +14,7 @@ MainWindow::MainWindow() {
     layout->addWidget(new SpinBox);
     layout->addWidget(new LineEdit);
     layout->addWidget(new Label);
+    layout->addWidget(new Button);
 
     auto* widget = new QWidget;
     widget->setLayout(layout);

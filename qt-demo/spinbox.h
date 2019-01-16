@@ -13,7 +13,7 @@ public:
         // Subscribe with a lambda function
         storeSubscribe([this](int value) { setValue(value); }, true);
         connect(this, qOverload<int>(&QSpinBox::valueChanged), storeSet);
-    };
+    }
 };
 
 
